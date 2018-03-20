@@ -89,11 +89,17 @@ public class Student_Test {
 	@BeforeClass
 	public static void enrollStudents(){
 		Enrollment enroll1c1s1 = new Enrollment(student1.getStudentID(), c1section1.getSectionID());
+		enroll1c1s1.setGrade(90);
 		Enrollment enroll1c1s2 = new Enrollment(student1.getStudentID(), c1section2.getSectionID());
+		enroll1c1s2.setGrade(90);
 		Enrollment enroll1c2s1 = new Enrollment(student1.getStudentID(), c2section1.getSectionID());
+		enroll1c2s1.setGrade(90);
 		Enrollment enroll1c2s2 = new Enrollment(student1.getStudentID(), c2section2.getSectionID());
+		enroll1c2s2.setGrade(90);
 		Enrollment enroll1c3s1 = new Enrollment(student1.getStudentID(), c3section1.getSectionID());
+		enroll1c3s1.setGrade(90);
 		Enrollment enroll1c3s2 = new Enrollment(student1.getStudentID(), c3section2.getSectionID());
+		enroll1c3s2.setGrade(90);
 		
 		Enrollment enroll2c1s1 = new Enrollment(student2.getStudentID(), c1section1.getSectionID());
 		Enrollment enroll2c1s2 = new Enrollment(student2.getStudentID(), c1section2.getSectionID());
