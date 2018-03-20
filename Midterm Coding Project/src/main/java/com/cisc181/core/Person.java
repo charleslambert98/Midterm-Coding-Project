@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 /*
  * comment
  */
-public abstract class Person implements java.io.Serializable {
+public abstract class Person implements java.io.Serializable{
 
 	private Date DOB;
 	private String FirstName;
@@ -17,6 +17,7 @@ public abstract class Person implements java.io.Serializable {
 	private String address;
 	private String phone_number;
 	private String email_address;
+	private final Date hundred = new Date(2017, 03, 18);
 
 	public String getFirstName() {
 		return FirstName;
@@ -89,16 +90,28 @@ public abstract class Person implements java.io.Serializable {
 	 */
 
 	public Person(String FirstName, String MiddleName, String LastName,
-			Date DOB, String Address, String Phone_number, String Email)
+			Date DOB, String Address, String Phone_number, String Email) throws PersonException
 	{
 		this.FirstName = FirstName;
 		this.MiddleName = MiddleName;
 		this.LastName = LastName;
 		this.setDOB(DOB);
+		
+		if (DOB.equals(hundred) || DOB.after(hundred)) {
+			throw new PersonException(this, "The person cannot be over 100 years old.");
+		}
+		
 		this.address = Address;
 		this.setPhone(Phone_number);
-		this.email_address = Email;
+		String regex = "^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$";
+		Pattern pattern = Pattern.compile(regex);
 		
+		Matcher matcher = pattern.matcher(phone_number);
+		if (!matcher.matches()) {
+			throw new PersonException(this, "Invalid phone number.");
+			}
+
+		this.email_address = Email;
 	}
 
 	public void PrintName() {

@@ -14,9 +14,9 @@ public class Student extends Person {
     {
         return this.Major;
     }
-    public void setMajor (String Major)
+    public void setMajor (eMajor Major)
     {
-        this.Major = Major;    
+        this.Major = Major.toString();    
     }
     
     public UUID getStudentID(){
@@ -24,7 +24,7 @@ public class Student extends Person {
     }
     
 	public Student(String FirstName, String MiddleName, String LastName,Date DOB, String Major,
-			String Address, String Phone_number, String Email)
+			String Address, String Phone_number, String Email) throws PersonException
 	{
 		super(FirstName, MiddleName, LastName, DOB, Address, Phone_number, Email);
 		this.StudentID = UUID.randomUUID();
